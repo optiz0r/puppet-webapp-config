@@ -16,7 +16,7 @@ define webapp_config ($action='install', $vhost, $base='/', $app, $version, $dep
         default:    { alert( "webapp-config: Action '$action' is invalid" ) } 
     }
        
-    exec { "webapp-${action}-${app}":
+    exec { "webapp-${action}-${app}-${vhost}${base}":
         command => $cmd,
         path    => [ "/usr/bin", "/usr/sbin" ],
         unless  => $unless,
