@@ -8,10 +8,10 @@ define webapp_config ($action='install', $vhost, $base='/', $app, $version, $dep
         
     case $action {
         "install":  { $cmd    = "webapp-config -I -h $vhost -d $base $app $version"
-                      $unless = "test -f ${_installdir}/htdocs/$base/.webapp-$app-$version"
+                      $unless = "test -f ${_installdir}/htdocs$base.webapp-$app-$version"
                     }
         "remove" :  { $cmd    = "webapp-config -C -h $vhost -d $base $app $version"
-                      $unless = "$(! test -f ${_installdir}/htdocs/$base/.webapp-$app-$version)"
+                      $unless = "$(! test -f ${_installdir}/htdocs$base.webapp-$app-$version)"
                     }
         default:    { alert( "webapp-config: Action '$action' is invalid" ) } 
     }
